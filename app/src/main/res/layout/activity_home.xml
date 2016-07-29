@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:text="功能列表"
+        style="@style/TitleStyle"/>
+    <!-- 跑马灯 -->
+    <!--<TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#000"
+        android:singleLine="true"
+        android:padding="5dp"
+        android:ellipsize="marquee"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:text="窗前明月光，疑是地上霜，举头望明月，低头思故乡。。。。。。。。"/>-->
+
+    <com.example.ryanzicky.phone360save.view.FocusTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#000"
+        android:singleLine="true"
+        android:padding="5dp"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:text="窗前明月光，疑是地上霜，举头望明月，低头思故乡。。。。。。。。">
+    </com.example.ryanzicky.phone360save.view.FocusTextView>
+
+    <GridView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/gv_home"
+        android:verticalSpacing="10dp"
+        android:numColumns="3">
+    </GridView>
+
+</LinearLayout>
