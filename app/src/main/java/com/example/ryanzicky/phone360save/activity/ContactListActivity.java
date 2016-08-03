@@ -42,7 +42,12 @@ public class ContactListActivity extends Activity{
                 //3.循环游标直到没有数据为止
                 while(cursor.moveToNext()){
                     String id = cursor.getString(0);
-                    Log.i(tag,"id = " + id);
+//                    Log.i(tag,"id = " + id);
+
+                    Cursor indexCursor = contentResolver.query(Uri.parse("content://com.android.contacts/raw_contacts"),
+                            new String[]{"data1", "mimetype"},
+                            "raw_contace_id = ?", new String[]{id}, null);
+                    indexCursor.close();
                 }
                 cursor.close();
             }
