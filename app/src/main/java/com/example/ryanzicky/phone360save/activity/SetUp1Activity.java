@@ -20,5 +20,7 @@ public class SetUp1Activity extends Activity{
     public void nextPage(View v){
         Intent intent = new Intent(getApplicationContext(), SetUp2Activity.class);
         startActivity(intent);
+
+        finish();
     }
 }
