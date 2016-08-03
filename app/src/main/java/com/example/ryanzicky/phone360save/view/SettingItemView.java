@@ -2,6 +2,7 @@ package com.example.ryanzicky.phone360save.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.RelativeLayout;
@@ -14,9 +15,15 @@ import com.example.ryanzicky.phone360save.R;
  */
 
 public class SettingItemView extends RelativeLayout {
+    private static final String NAMESPACE = "http://schemas.android.com/apk/res/com.example.ryanzicky.phone360save";
+    private static final String tag = "SettingItemView";
     private TextView tv_title;
     private TextView tv_des;
     private CheckBox cb_box;
+
+    private String mDestitle;
+    private String mDesoff;
+    private String mDeson;
     public SettingItemView(Context context) {
         this(context,null);
     }
@@ -35,7 +42,36 @@ public class SettingItemView extends RelativeLayout {
         tv_des = (TextView) findViewById(R.id.tv_des);
         cb_box = (CheckBox) findViewById(R.id.cb_box);
 
-//        cb_box.isChecked()
+        //获取自定义以及原生属性的操作，写在此处，AttributeSet ttrs对象中获取
+        initAttrs(attrs);
+
+        //获取布局文件中定义的字符串，赋值给自定义自合控件的标题
+        tv_title.setText(mDestitle);
+    }
+
+    /**
+     *
+     * @param attrs 构造方法中维护好的属性集合
+     *              返回属性集合中自定义属性属性值
+     */
+    private void initAttrs(AttributeSet attrs) {
+        /*//获取属性的总个数
+        Log.i(tag,"attrs.getAttributeCount() = " + attrs.getAttributeCount());
+        //获取属性名称以及属性值
+        for(int i = 0; i < attrs.getAttributeCount(); i++){
+            Log.i(tag,"attrs.getAttributeName() = " + attrs.getAttributeName(i));
+            Log.i(tag,"attrs.getAttributeValue() = " + attrs.getAttributeValue(i));
+            Log.i(tag,"分割线======================================================");
+        }*/
+
+        mDestitle = attrs.getAttributeValue(NAMESPACE, "destitle");
+        mDesoff = attrs.getAttributeValue(NAMESPACE, "desoff");
+        mDeson = attrs.getAttributeValue(NAMESPACE, "deson");
+
+        Log.i(tag,mDestitle);
+        Log.i(tag,mDesoff);
+        Log.i(tag,mDeson);
+
     }
 
     /**
@@ -56,10 +92,10 @@ public class SettingItemView extends RelativeLayout {
         cb_box.setChecked(isCheck);
         if(isCheck){
             //开启
-            tv_des.setText("自动更新已开启");
+            tv_des.setText(mDeson);
         }else{
             //关闭
-            tv_des.setText("自动更新已关闭");
+            tv_des.setText(mDesoff);
         }
     }
 }

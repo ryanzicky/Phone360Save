@@ -40,8 +40,12 @@
     </RelativeLayout>-->
 
     <com.example.ryanzicky.phone360save.view.SettingItemView
+        xmlns:mobilesave="http://schemas.android.com/apk/res/com.example.ryanzicky.phone360save"
         android:id="@+id/siv_update"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        mobilesave:destitle="自动更新设置"
+        mobilesave:desoff="自动更新已关闭"
+        mobilesave:deson="自动更新已开启">
     </com.example.ryanzicky.phone360save.view.SettingItemView>
 </LinearLayout>
