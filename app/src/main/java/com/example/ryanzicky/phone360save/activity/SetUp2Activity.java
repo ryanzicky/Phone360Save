@@ -17,7 +17,7 @@ import com.example.ryanzicky.phone360save.view.SettingItemView;
 /**
  * Created by ryanzicky on 2016/8/3.
  */
-public class SetUp2Activity extends Activity{
+public class SetUp2Activity extends BaseSetUpActivity{
     private SettingItemView siv_sim_bound;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +25,31 @@ public class SetUp2Activity extends Activity{
         setContentView(R.layout.activity_setup2);
 
         initUI();
+    }
+
+    @Override
+    public void showNextPage() {
+        String serialNumber = SpUtil.getString(this, ConstantValue.SIM_NUMBER, "");
+        if(!TextUtils.isEmpty(serialNumber)){
+            Intent intent = new Intent(getApplicationContext(), SetUp3Activity.class);
+            startActivity(intent);
+
+            finish();
+
+            overridePendingTransition(R.anim.next_in_anim,R.anim.next_out_anim);
+        }else{
+            ToastUtil.show(this,"请绑定sim卡");
+        }
+    }
+
+    @Override
+    public void showPrePage() {
+        Intent intent = new Intent(getApplicationContext(), SetUp1Activity.class);
+        startActivity(intent);
+
+        finish();
+
+        overridePendingTransition(R.anim.pre_in_anim,R.anim.pre_out_anim);
     }
 
     private void initUI() {
@@ -64,13 +89,15 @@ public class SetUp2Activity extends Activity{
     }
 
 
-    public void nextPage(View v){
+    /*public void nextPage(View v){
         String serialNumber = SpUtil.getString(this, ConstantValue.SIM_NUMBER, "");
         if(!TextUtils.isEmpty(serialNumber)){
             Intent intent = new Intent(getApplicationContext(), SetUp3Activity.class);
             startActivity(intent);
 
             finish();
+
+            overridePendingTransition(R.anim.next_in_anim,R.anim.next_out_anim);
         }else{
             ToastUtil.show(this,"请绑定sim卡");
         }
@@ -81,5 +108,7 @@ public class SetUp2Activity extends Activity{
         startActivity(intent);
 
         finish();
-    }
+
+        overridePendingTransition(R.anim.pre_in_anim,R.anim.pre_out_anim);
+    }*/
 }

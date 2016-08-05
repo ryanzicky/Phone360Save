@@ -28,7 +28,7 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
-    <style name="nextBtn">
+    <style name="nextBtnStyle">
         <item name="android:text">下一页</item>
         <item name="android:onClick">nextPage</item>
         <item name="android:layout_alignParentRight">true</item>
@@ -39,7 +39,7 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
-    <style name="preBtn">
+    <style name="preBtnStyle">
         <item name="android:text">上一页</item>
         <item name="android:onClick">prePage</item>
         <item name="android:layout_alignParentLeft">true</item>

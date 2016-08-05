@@ -42,8 +42,8 @@
             android:layout_height="wrap_content" />
         <!-- 图片选择器，在选中和未选中的过程中，切换展示图片 -->
         <Button
-            style="@style/preBtn" />
+            style="@style/preBtnStyle" />
         <Button
-            style="@style/nextBtn" />
+            style="@style/nextBtnStyle" />
     </RelativeLayout>
 </LinearLayout>

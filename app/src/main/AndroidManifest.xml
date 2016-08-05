@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.ryanzicky.phone360save"
     android:versionCode="1"
     android:versionName="1.0">
@@ -11,11 +12,16 @@
 			倒数第二位:更新部分功能
 			第一位:项目重大更新(代码重构,大部分功能添加,界面整体修改)
     -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- //获取准确GPS坐标的权限 -->
+    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION"
+        tools:ignore="MockLocation" /> <!-- //允许模拟器模拟位置坐标的权限 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- //获取粗略坐标的权限(网络定位时使用) -->
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
     <uses-permission android:name="android.permission.SET_DEBUG_APP"></uses-permission>
     <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
     <uses-permission android:name="android.permission.READ_CONTACTS"></uses-permission>
+    <uses-permission android:name="android.permission.RECEIVE_SMS"></uses-permission>
 
     <application
         android:allowBackup="true"
@@ -40,6 +46,21 @@
         <activity android:name=".activity.SetUp3Activity"></activity>
         <activity android:name=".activity.SetUp4Activity"></activity>
         <activity android:name=".activity.ContactListActivity"></activity>
+        <activity android:name=".activity.AToolsActivity"></activity>
+        <activity android:name=".activity.QueryAddressActivity"></activity>
+
+        <receiver android:name=".receiver.BootReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".receiver.SmsReceiver" >
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name=".service.LocationService"></service>
     </application>
 
 </manifest>
