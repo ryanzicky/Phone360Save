@@ -19,13 +19,14 @@ public class AddressDao {
      * @param phone 查询电话号码
      */
     public static String getAddress(String phone){
+        mAddress = "未知号码";
         //正则表达式，匹配手机号
         //手机号码的正则表达式
         String regularExpression = "^1[3-8]\\d{9}";
         //2.开启数据库连接
         SQLiteDatabase db = SQLiteDatabase.openDatabase(path, null, SQLiteDatabase.OPEN_READONLY);
-        if(phone.matches(regularExpression)){
-            phone = phone.substring(0, 7);
+//        if(phone.matches(regularExpression)){
+//            phone = phone.substring(0, 7);
             //3.数据库查询
             Cursor cursor = db.query("data1", new String[]{"outkey"}, "id = ?", new String[]{phone}, null, null, null);
             //4.查到即可
@@ -82,7 +83,7 @@ public class AddressDao {
                         break;
                 }
             }
-        }
+//        }
         return mAddress;
     }
 }
