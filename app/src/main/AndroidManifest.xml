@@ -55,6 +55,7 @@
         <activity android:name=".activity.QueryAddressActivity"></activity>
         <activity android:name=".activity.ToastLocationActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:name=".activity.BlackNumberActivity"></activity>
 
         <receiver android:name=".receiver.BootReceiver" >
             <intent-filter>
