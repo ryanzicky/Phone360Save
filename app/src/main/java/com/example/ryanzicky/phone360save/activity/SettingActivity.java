@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.example.ryanzicky.phone360save.R;
 import com.example.ryanzicky.phone360save.service.AddressService;
+import com.example.ryanzicky.phone360save.service.BlackNumberService;
 import com.example.ryanzicky.phone360save.utils.ConstantValue;
 import com.example.ryanzicky.phone360save.utils.ServiceUtil;
 import com.example.ryanzicky.phone360save.utils.SpUtil;
@@ -32,6 +33,31 @@ public class SettingActivity extends Activity{
         initAddress();
         initToastStyle();
         initLocation();
+        initBlacknumber();
+    }
+
+    /**
+     * 拦截黑名单短信电话
+     */
+    private void initBlacknumber() {
+        final SettingItemView siv_blacknumber = (SettingItemView) findViewById(R.id.siv_blacknumber);
+        boolean isRunning = ServiceUtil.isRuning(this, "com.example.ryanzicky.phone360save.service.BlackNumberService");
+        siv_blacknumber.setCheck(isRunning);
+
+        siv_blacknumber.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                boolean isCheck = siv_blacknumber.isCheck();
+                siv_blacknumber.setCheck(!isCheck);
+                if(isCheck){
+                    //开启服务
+                    startService(new Intent(getApplicationContext(), BlackNumberService.class));
+                }else {
+                    //关闭服务
+                    stopService(new Intent(getApplicationContext(), BlackNumberService.class));
+                }
+            }
+        });
     }
 
     /**

@@ -14,7 +14,6 @@ import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.ryanzicky.phone360save.R;
 import com.example.ryanzicky.phone360save.utils.ConstantValue;
@@ -71,8 +70,10 @@ public class HomeActivity extends Activity{
                         startActivity(new Intent(getApplicationContext(),BlackNumberActivity.class));
                         break;
                     case 2:
+                        startActivity(new Intent(getApplicationContext(),AppManagerActivity.class));
                         break;
                     case 3:
+                        startActivity(new Intent(getApplicationContext(),ProcessManagerActivity.class));
                         break;
                     case 4:
                         break;

@@ -16,4 +16,19 @@
         android:gravity="center"
         android:textSize="18sp"
         android:drawableLeft="@android:drawable/btn_star"/>
+    <TextView
+        android:id="@+id/tv_sms_backup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="短信备份"
+        android:padding="5dp"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:drawableLeft="@android:drawable/btn_star"/>
+    <ProgressBar
+
+        android:id="@+id/pb_bar"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>

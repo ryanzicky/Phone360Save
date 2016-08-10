@@ -39,4 +39,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
     </com.example.ryanzicky.phone360save.view.SettingClickView>
+
+    <com.example.ryanzicky.phone360save.view.SettingItemView
+        xmlns:mobilesave="http://schemas.android.com/apk/res/com.example.ryanzicky.phone360save"
+        android:id="@+id/siv_blacknumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        mobilesave:destitle="黑名单拦截设置"
+        mobilesave:desoff="黑名单拦截已关闭"
+        mobilesave:deson="黑名单拦截已开启">
+    </com.example.ryanzicky.phone360save.view.SettingItemView>
 </LinearLayout>
