@@ -49,4 +49,14 @@
         mobilesave:desoff="黑名单拦截已关闭"
         mobilesave:deson="黑名单拦截已开启">
     </com.example.ryanzicky.phone360save.view.SettingItemView>
+
+    <com.example.ryanzicky.phone360save.view.SettingItemView
+        xmlns:mobilesave="http://schemas.android.com/apk/res/com.example.ryanzicky.phone360save"
+        android:id="@+id/siv_app_lock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        mobilesave:destitle="程序锁设置"
+        mobilesave:desoff="程序锁已关闭"
+        mobilesave:deson="程序锁已开启">
+    </com.example.ryanzicky.phone360save.view.SettingItemView>
 </LinearLayout>

@@ -18,7 +18,7 @@ import java.io.File;
  * Created by ryanzicky on 2016/8/5.
  */
 public class AToolsActivity extends Activity{
-    private TextView tv_query_phone_address,tv_sms_backup;
+    private TextView tv_query_phone_address,tv_sms_backup,tv_commonnumber_query,tv_app_lock;
     private ProgressBar pb_bar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +27,32 @@ public class AToolsActivity extends Activity{
 
         //电话归属地查询方法
         initPhoneAddress();
+        //短信备份方法
         initSmsBackUp();
+        //常用号码查询
+        initCommonNumberQuery();
+        //
+        initAppLock();
+    }
+
+    private void initAppLock() {
+        tv_app_lock = (TextView) findViewById(R.id.tv_app_lock);
+        tv_app_lock.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),AppLockActivity.class));
+            }
+        });
+    }
+
+    private void initCommonNumberQuery() {
+        tv_commonnumber_query = (TextView) findViewById(R.id.tv_commonnumber_query);
+        tv_commonnumber_query.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),CommonNumberQueryActivity.class));
+            }
+        });
     }
 
     private void initSmsBackUp() {

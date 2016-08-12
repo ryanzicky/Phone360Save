@@ -6,11 +6,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.ryanzicky.phone360save.R;
 import com.example.ryanzicky.phone360save.service.AddressService;
 import com.example.ryanzicky.phone360save.service.BlackNumberService;
+import com.example.ryanzicky.phone360save.service.WatchDogService;
 import com.example.ryanzicky.phone360save.utils.ConstantValue;
 import com.example.ryanzicky.phone360save.utils.ServiceUtil;
 import com.example.ryanzicky.phone360save.utils.SpUtil;
@@ -34,6 +34,31 @@ public class SettingActivity extends Activity{
         initToastStyle();
         initLocation();
         initBlacknumber();
+        initAppLock();
+    }
+
+    /**
+     * 初始化程序锁方法
+     */
+    private void initAppLock() {
+        final SettingItemView siv_app_lock = (SettingItemView) findViewById(R.id.siv_app_lock);
+        boolean isRunning = ServiceUtil.isRuning(this, "com.example.ryanzicky.phone360save.service.WatchDogService");
+        siv_app_lock.setCheck(isRunning);
+
+        siv_app_lock.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                boolean isCheck = siv_app_lock.isCheck();
+                siv_app_lock.setCheck(!isCheck);
+                if(isCheck){
+                    //开启服务
+                    startService(new Intent(getApplicationContext(), WatchDogService.class));
+                }else {
+                    //关闭服务
+                    stopService(new Intent(getApplicationContext(), WatchDogService.class));
+                }
+            }
+        });
     }
 
     /**
